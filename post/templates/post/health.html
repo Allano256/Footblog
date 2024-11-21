@@ -1,9 +1,13 @@
+{%extends 'base.html' %} {%load static%} {%block css_files%}
+<link rel="stylesheet" href="{% static 'post/css/index.css' %}" />
+<link rel="stylesheet" href="{% static 'post/css/nutrition.css' %}" />
+
 {%endblock%} {%block title%} {%endblock%} {%block content%}
 
-<div class="nutrition-section">
+<div class="base-section">
   <h3>{{post.title}}</h3>
   <ul>
-    {%if nutrition_posts%} {% for post in nutrition_posts%}
+    {%if health_tips%} {% for post in health_tips%}
     <li><strong>{{post.title}} </strong></li>
     <li>{{post.content}}</li>
 

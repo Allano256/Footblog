@@ -3,18 +3,41 @@
 <link rel="stylesheet" href="{% static 'post/css/nutrition.css' %}" />
 
 {%endblock%} {%block title%} {%endblock%} {%block content%}
+<div class="container">
+  <div class="base-section">
+    <h3>{{post.title}}</h3>
+    <ul>
+      {%if nutrition_posts%} {% for post in nutrition_posts%}
+      <li><strong>{{post.title}} </strong></li>
+      <li>{{post.content}}</li>
 
-<div class="nutrition-section">
-  <h3>{{post.title}}</h3>
-  <ul>
-    {%if nutrition_posts%} {% for post in nutrition_posts%}
-    <li><strong>{{post.title}} </strong></li>
-    <li>{{post.content}}</li>
+      {%endfor%} {%else%}
+      <p>Sorry no posts at the moment...</p>
+      {%endif%}
+    </ul>
+  </div>
 
-    {%endfor%} {%else%}
-    <p>Sorry no posts at the moment...</p>
-    {%endif%}
-  </ul>
+  <div class="comment-section">
+    <form method="POST" action="#">
+      {% csrf_token %}
+      <h3>Leave a comment below or suggestion to post!</h3>
+      <label for="name">Your Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your name"
+        required />
+      <label for="comment">Your Comment:</label>
+      <textarea
+        id="comment"
+        name="comment"
+        rows="4"
+        placeholder="Type your comment here..."
+        required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 
 {%endblock%}

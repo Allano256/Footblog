@@ -9,15 +9,19 @@
   </div>
   <div class="grid-item">
     <img src="{% static  'post/images/tactics.jpg'%}" alt="" />
-    <a class="read-more" href=""><p>Sports Tips</p></a>
+    <a class="read-more" href="{% url 'sports_tips' %}"><p>Sports Tips</p></a>
   </div>
   <div class="grid-item">
     <img src="{% static  'post/images/health.jpg'%}" alt="" />
-    <a class="read-more" href=""><p>Health and Wellness</p></a>
+    <a class="read-more" href="{% url 'health' %}"
+      ><p>Health and Wellness</p></a
+    >
   </div>
   <div class="grid-item">
     <img src="{% static  'post/images/insights.jpg'%}" alt="" />
-    <a class="read-more" href=""><p>Personal Insights</p></a>
+    <a class="read-more" href="{% url 'insights' %}"
+      ><p>Personal Insights</p></a
+    >
   </div>
 </section>
 
