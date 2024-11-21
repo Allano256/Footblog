@@ -5,5 +5,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('It works')
+    return render(request, 'post/index.html')
+
+def nutrition(request):
+    return render(request, 'nutrition/nutrition.html')
 
