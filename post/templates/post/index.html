@@ -1,22 +1,23 @@
 {%extends 'base.html' %} {%load static%} {%block css_files%}
-<link rel="stylesheet" href="{% static 'post/css/index.css' %}" /> {%endblock%}
-{%block title%} Start Page {% endblock%} {%block content%}
+
+<link rel="stylesheet" href="{% static 'post/css/index.css' %}" />
+{%endblock%} {%block title%} {% endblock%} {%block content%}
 <section class="output">
   <div class="grid-item">
-    <img src="" alt="" />
-    <a class="read-more" href=""><p>What the card is about</p></a>
+    <img src="{% static  'post/images/nutrition.jpg'%} " alt="food" />
+    <a class="read-more" href=""><p>Nutrition</p></a>
   </div>
   <div class="grid-item">
-    <img src="" alt="" />
-    <a class="read-more" href=""><p>What the card is about</p></a>
+    <img src="{% static  'post/images/tactics.jpg'%}" alt="" />
+    <a class="read-more" href=""><p>Sports Tips</p></a>
   </div>
   <div class="grid-item">
-    <img src="" alt="" />
-    <a class="read-more" href=""><p>What the card is about</p></a>
+    <img src="{% static  'post/images/health.jpg'%}" alt="" />
+    <a class="read-more" href=""><p>Health and Wellness</p></a>
   </div>
   <div class="grid-item">
-    <img src="" alt="" />
-    <a class="read-more" href=""><p>What the card is about</p></a>
+    <img src="{% static  'post/images/insights.jpg'%}" alt="" />
+    <a class="read-more" href=""><p>Personal Insights</p></a>
   </div>
 </section>
 
