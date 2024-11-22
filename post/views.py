@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Post
+from django.contrib import messages
+from .models import Post, Comment
+from .forms import CommentForm
+
 
 # Create your views here.
 
@@ -10,12 +13,33 @@ def index(request):
 
 
 def nutrition(request):
+
+    form =CommentForm()
+
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            your_comment=form.cleaned_data['your_comment']
+            Comment.objects.create(name=name, your_comment=your_comment)
+
+            messages.success(request,'Your comment has been successfully submitted')
+            return redirect('nutrition')
+        else:
+            form=CommentForm()
+        
+        # Fetch nutrition posts
     nutrition_posts=Post.objects.filter(title__icontains='nutrition')
+    comments=Comment.objects.all()
     # Use 'icontains' for case-insensitive matching
-    context ={'nutrition_posts':nutrition_posts}
+    context ={'nutrition_posts':nutrition_posts,
+              'form':form, 'comments':comments}
     return render(request, 'post/nutrition.html', 
          context
     )
+
+
+
 
 def sports_tips(request):
     tips=Post.objects.filter(title__icontains='tips')

@@ -8,6 +8,6 @@ urlpatterns = [
     path('sports_tips/',views.sports_tips, name='sports_tips'),
     path('insights/',views.insights, name='insights'),
     path('health/',views.health, name='health'),
-    
-    
+     
+      
 ]
