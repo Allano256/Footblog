@@ -66,18 +66,71 @@ def delete_comment(request, pk):
 
 
 def sports_tips(request):
+    form =CommentForm()
+
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            your_comment=form.cleaned_data['your_comment']
+            Comment.objects.create(name=name, your_comment=your_comment)
+
+            messages.success(request,'Your comment has been successfully submitted')
+            return redirect('insights')
+        else:
+            form=CommentForm()
+    
+
+
     tips=Post.objects.filter(title__icontains='tips')
-    context={'tips':tips}
+    comments=Comment.objects.all()
+    context ={'tips':tips,
+              'form':form, 'comments':comments}
     return render(request,'post/sports_tips.html',context)
 
 def insights(request):
+    form =CommentForm()
+
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            your_comment=form.cleaned_data['your_comment']
+            Comment.objects.create(name=name, your_comment=your_comment)
+
+            messages.success(request,'Your comment has been successfully submitted')
+            return redirect('insights')
+        else:
+            form=CommentForm()
+
+
     insights=Post.objects.filter(title__icontains='insights')
-    context={'insights':insights}
+    comments=Comment.objects.all()
+    context ={'insights':insights,
+              'form':form, 'comments':comments}
     return render(request, 'post/insights.html', context)
 
 def health(request):
+    form =CommentForm()
+
+    if request.method=="POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            your_comment=form.cleaned_data['your_comment']
+            Comment.objects.create(name=name, your_comment=your_comment)
+
+            messages.success(request,'Your comment has been successfully submitted')
+            return redirect('health')
+        else:
+            form=CommentForm()
+
+
+
     health_tips=Post.objects.filter(title__icontains='health')
-    context={'health_tips': health_tips}
+    comments=Comment.objects.all()
+    context ={'health_tips':health_tips,
+              'form':form, 'comments':comments}
     return render(request,'post/health.html', context)
 
 

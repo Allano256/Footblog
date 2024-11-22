@@ -13,15 +13,18 @@
     {% endblock%}
   </head>
   <nav class="navigation">
-    <div class="logo"><a href="">logo</a></div>
+    <div class="logo">
+      <a href="{% url 'home' %}"><span>Foot:blog</span></a>
+    </div>
 
     <div class="center-links">
-      <a href="">About</a>
-      <a href="">Contact Us</a>
+      <a href="{% url 'home' %}"> <span>Home</span></a>
+      <a href=""> <span>About</span></a>
     </div>
     <div class="auth-links">
-      <a href="">logIn</a>
-      <a href="">logOut</a>
+      <a href=""> <span>logIn</span></a>
+      <a href=""> <span>logOut</span></a>
+      <span></span>
     </div>
   </nav>
   <body>
