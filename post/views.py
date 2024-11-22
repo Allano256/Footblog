@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import Post, Comment
@@ -37,6 +37,30 @@ def nutrition(request):
     return render(request, 'post/nutrition.html', 
          context
     )
+
+def edit_comment(request,pk):
+    comment=get_object_or_404(Comment,pk=pk)
+
+    if request.method== "POST":
+        form=CommentForm(request.POST,instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your comment has been updated successfuly')
+            return redirect('nutrition')
+    else:
+        form =CommentForm
+
+    return redirect(request,'post/nutrition.html',{'form':form,'comment':comment})
+
+def delete_comment(request, pk):
+    comment=get_object_or_404(Comment,pk=pk)
+    if request.method=="POST":
+            comment.delete()
+            messages.success(request,'Your comment has been successfully deleted')
+            return redirect('nutrition')
+        
+    return render(request,'post/nutrition.html', {'comment':comment})
+
 
 
 
